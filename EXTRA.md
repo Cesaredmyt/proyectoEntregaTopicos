@@ -3,7 +3,7 @@
 ## Integrantes
 
 1. Cesar Enrique Díaz Maldonado
-2. (nombre completo)
+2. Enrique Martinez
 3. (nombre completo)
 4. (nombre completo)
 5. (nombre completo)
@@ -16,13 +16,13 @@ Cada integrante clonó el repositorio, creó su propio entorno virtual, instaló
 
 ### Resumen
 
-| Integrante                   | Sistema operativo | Entorno virtual activo | Captura de `/entregas/estado/`               |
-| ---------------------------- | ----------------- | ---------------------- | -------------------------------------------- |
-| Cesar Enrique Díaz Maldonado | Windows           | Sí                     | [captura](evidencias/reto1-cesar-estado.png) |
-| (integrante 2)               | (pendiente)       | (pendiente)            | (pendiente)                                  |
-| (integrante 3)               | (pendiente)       | (pendiente)            | (pendiente)                                  |
-| (integrante 4)               | (pendiente)       | (pendiente)            | (pendiente)                                  |
-| (integrante 5)               | (pendiente)       | (pendiente)            | (pendiente)                                  |
+| Integrante                   | Sistema operativo | Entorno virtual activo | Captura de `/entregas/estado/`                 |
+| ---------------------------- | ----------------- | ---------------------- | ---------------------------------------------- |
+| Cesar Enrique Díaz Maldonado | Windows           | Sí                     | [captura](evidencias/reto1-cesar-estado.png)   |
+| Enrique Martinez             | Windows           | Si                     | [captura](evidencias/reto1-enrique-estado.png) |
+| (integrante 3)               | (pendiente)       | (pendiente)            | (pendiente)                                    |
+| (integrante 4)               | (pendiente)       | (pendiente)            | (pendiente)                                    |
+| (integrante 5)               | (pendiente)       | (pendiente)            | (pendiente)                                    |
 
 ### Evidencias de Cesar Enrique Díaz Maldonado
 
@@ -48,9 +48,30 @@ El servidor arrancó y respondió `GET /entregas/estado/ HTTP/1.1 200`:
 
 ![Respuesta de /entregas/estado/](evidencias/reto1-cesar-estado.png)
 
-### Evidencias de los demás integrantes
+### Evidencias de Enrique Martinez
 
-(Agregar aquí, por cada integrante: su nombre, la salida de `sys.prefix` y su captura de `/entregas/estado/`.)
+Comandos usados (Windows, `PowerShell`):
+
+```
+git clone https://github.com/Cesaredmyt/proyectoEntregaTopicos.git
+cd proyectoEntregaTopicos
+py -3.12 -m venv .venv
+.venv\Scripts\activate.bat
+pip install -r requirements.txt
+python -c "import sys; print(sys.prefix)"
+python manage.py runserver
+```
+
+Salida de `python -c "import sys; print(sys.prefix)"` con el entorno activo:
+
+```
+C:\Users\enriq\proyectoEntregaTopicos\.venv
+```
+
+El servidor arrancó y respondió `GET /entregas/estado/ HTTP/1.1 200`:
+
+![Respuesta de /entregas/estado/](evidencias/reto1-enrique-estado.png)
+
 
 ### Diferencias entre sistemas operativos
 
