@@ -4,7 +4,7 @@
 
 1. Cesar Enrique Díaz Maldonado
 2. Enrique Martinez
-3. (nombre completo)
+3. Adrián Martínez Ortiz
 4. (nombre completo)
 5. (nombre completo)
 
@@ -20,7 +20,7 @@ Cada integrante clonó el repositorio, creó su propio entorno virtual, instaló
 | ---------------------------- | ----------------- | ---------------------- | ---------------------------------------------- |
 | Cesar Enrique Díaz Maldonado | Windows           | Sí                     | [captura](evidencias/reto1-cesar-estado.png)   |
 | Enrique Martinez             | Windows           | Si                     | [captura](evidencias/reto1-enrique-estado.png) |
-| (integrante 3)               | (pendiente)       | (pendiente)            | (pendiente)                                    |
+| Adrián Martínez Ortiz        | Mac.              | Si.                    | [captura](evidencias/reto1-adrian-estado.png)  |
 | (integrante 4)               | (pendiente)       | (pendiente)            | (pendiente)                                    |
 | (integrante 5)               | (pendiente)       | (pendiente)            | (pendiente)                                    |
 
