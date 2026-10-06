@@ -20,7 +20,7 @@ Cada integrante clonó el repositorio, creó su propio entorno virtual, instaló
 | ---------------------------- | ----------------- | ---------------------- | ---------------------------------------------- |
 | Cesar Enrique Díaz Maldonado | Windows           | Sí                     | [captura](evidencias/reto1-cesar-estado.png)   |
 | Enrique Martinez             | Windows           | Si                     | [captura](evidencias/reto1-enrique-estado.png) |
-| Adrián Martínez Ortiz        | Mac.              | Si.                    | [captura](evidencias/reto1-adrian-estado.png)  |
+| Adrián Martínez Ortiz        | macOS              | Si.                    | [captura](evidencias/reto1-adrian-estado.png)  |
 | José Antonio Medina Ayala    | Windows           | Si                     | [captura](evidencias/reto1-medinaayala-estado.png) |
 | Paulo Cesar Perez Martinez   | macOS             | Sí                     | [captura](evidencias/reto1-paulo-estado.png)   |
 
@@ -71,6 +71,20 @@ C:\Users\enriq\proyectoEntregaTopicos\.venv
 El servidor arrancó y respondió `GET /entregas/estado/ HTTP/1.1 200`:
 
 ![Respuesta de /entregas/estado/](evidencias/reto1-enrique-estado.png)
+## Evidencias de Adrián Martínez Ortiz
+No sirve el python 9 que trae macOS por defecto así que se instalo el 11 para poder cargar las librerías del requriments
+```
+❯ git clone https://github.com/Cesaredmyt/proyectoEntregaTopicos.git
+❯ cd proyectoEntregaTopicos
+❯ python3.11 -m venv .venv
+❯ source .venv/bin/activate
+❯ pip install -r requirements.txt
+❯ python -c "import sys; print(sys.prefix)"
+/Users/apple/Desktop/Proyectos/proyectoEntregaTopicos/.venv
+```
+Corrio el server con las rutas propuestas dando respuesta:
+![Respuesta de /entregas/estado/](evidencias/reto1-adrian-estado.png)
+
 
 ### Evidencias de Paulo Cesar Perez Martinez
 
