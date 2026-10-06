@@ -21,7 +21,7 @@ Cada integrante clonó el repositorio, creó su propio entorno virtual, instaló
 | Cesar Enrique Díaz Maldonado | Windows           | Sí                     | [captura](evidencias/reto1-cesar-estado.png)   |
 | Enrique Martinez             | Windows           | Si                     | [captura](evidencias/reto1-enrique-estado.png) |
 | Adrián Martínez Ortiz        | Mac.              | Si.                    | [captura](evidencias/reto1-adrian-estado.png)  |
-| José Antonio Medina Ayala    | (pendiente)       | (pendiente)            | [captura](evidencias/reto1-medinaayala-estado.png) |
+| José Antonio Medina Ayala    | Windows           | Si                     | [captura](evidencias/reto1-medinaayala-estado.png) |
 | Paulo Cesar Perez Martinez   | macOS             | Sí                     | [captura](evidencias/reto1-paulo-estado.png)   |
 
 ### Evidencias de Cesar Enrique Díaz Maldonado
@@ -95,6 +95,30 @@ Salida de `python -c "import sys; print(sys.prefix)"` con el entorno activo (Pyt
 El servidor arrancó y `/entregas/estado/` respondió con el JSON del servicio (`"atendido_por": "MacBook-Pro-de-Paulo.local"`):
 
 ![Respuesta de /entregas/estado/](evidencias/reto1-paulo-estado.png)
+
+### Evidencias de José Antonio Medina
+
+Comandos usados (Windows, `PowerShell`):
+
+```
+git clone https://github.com/Cesaredmyt/proyectoEntregaTopicos.git
+cd proyectoEntregaTopicos
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python -c "import sys; print(sys.prefix)"
+python manage.py runserver
+```
+
+Salida de `python -c "import sys; print(sys.prefix)"` con el entorno activo:
+
+```
+C:\Users\tony2\OneDrive\Desktop\proyectoEntregaTopicos\proyectoEntregaTopicos\.venv
+```
+
+El servidor arrancó y respondió `GET /entregas/estado/ HTTP/1.1 200`:
+
+![Respuesta de /entregas/estado/](evidencias/reto1-medinaayala-estado.pngestado.png)
 
 ### Diferencias entre sistemas operativos
 
