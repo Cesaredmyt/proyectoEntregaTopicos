@@ -5,7 +5,7 @@
 1. Cesar Enrique Díaz Maldonado
 2. Enrique Martinez
 3. Adrián Martínez Ortiz
-4. (nombre completo)
+4. José Antonio Medina Ayala
 5. (nombre completo)
 
 ---
