@@ -1,5 +1,7 @@
 import socket
+import math
 
+from .reglas import elegir_medio
 from django.http import HttpResponse, JsonResponse
 
 COPIA = socket.gethostname()
@@ -31,3 +33,22 @@ def visitas_mal(request):
         "atendido_por": COPIA,
         "visitas": visitas_en_memoria,
     })
+
+def cotizar(request):
+    try:
+        km = float(request.GET.get("km"))
+        kg = float(request.GET.get("kg"))
+    except (TypeError, ValueError):
+        return JsonResponse(
+            {"error": "km y kg son obligatorios y deben ser numeros"},
+            status=400,
+        )
+
+    if not (math.isfinite(km) and math.isfinite(kg)) or km < 0 or kg < 0:
+        return JsonResponse(
+            {"error": "km y kg deben ser numeros positivos"},
+            status=400,
+        )
+
+    medio, motivo = elegir_medio(km, kg)
+    return JsonResponse({"km": km, "kg": kg, "medio": medio, "motivo": motivo})
