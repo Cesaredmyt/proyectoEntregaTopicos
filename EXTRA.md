@@ -215,7 +215,55 @@ Usaríamos el patrón Strategy. Cada medio de entrega sería una clase con su pr
 
 ## Reto 3 — Dos clientes, un solo backend
 
-(pendiente)
+### Cambio de la regla
+
+Se cambió únicamente el límite de kilómetros de la bicicleta en `entregas/reglas.py`, de 7 a 15, sin modificar ninguno de los dos clientes.
+
+Antes:
+
+```python
+    if km <= 7 and kg < 8:
+        return "bicicleta", "distancia corta y paquete ligero"
+```
+
+Después:
+
+```python
+    if km <= 15 and kg < 8:
+        return "bicicleta", "distancia corta y paquete ligero"
+```
+
+### Evidencias
+
+Página web antes del cambio de la regla (resultado: moto):
+
+![Página web antes del cambio](evidencias/reto3-web-antes.png)
+
+Salida del programa de Python antes del cambio de la regla:
+
+```
+python cliente_movil.py
+Medio sugerido: moto
+Motivo: distancia media o paquete de peso medio
+```
+
+Página web después del cambio de la regla (resultado: bicicleta):
+
+![Página web después del cambio](evidencias/reto3-web-despues.png)
+
+Salida del programa de Python después del cambio de la regla:
+
+```
+python cliente_movil.py
+Medio sugerido: bicicleta
+Motivo: distancia corta y paquete ligero
+```
+
+### Pregunta
+
+**Si la regla hubiera estado en el JavaScript de la página, ¿qué habría pasado con el cliente de Python al cambiarla?**
+
+El cambio solo habría afectado a la página web. El cliente de Python no ejecuta ese JavaScript, por lo que habría seguido con la regla anterior o habría necesitado su propia copia, y los dos clientes habrían dado respuestas distintas para el mismo paquete. Para corregirlo sería necesario modificar la regla en cada cliente por separado, y bastaría con olvidar uno para que el sistema se contradiga. Además, las páginas o aplicaciones que siguieran en una versión vieja continuarían usando la regla anterior. Al estar la regla en el backend, en `reglas.py`, basta con cambiar un solo número para que ambos clientes reflejen el cambio al instante, sin modificarlos.
 
 ## Reto 4 — Réplicas: hacerlo fallar y arreglarlo
 

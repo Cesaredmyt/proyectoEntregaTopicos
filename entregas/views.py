@@ -3,6 +3,7 @@ import math
 
 from .reglas import elegir_medio
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
 
 COPIA = socket.gethostname()
 
@@ -52,3 +53,6 @@ def cotizar(request):
 
     medio, motivo = elegir_medio(km, kg)
     return JsonResponse({"km": km, "kg": kg, "medio": medio, "motivo": motivo})
+
+def cliente(request):
+    return render(request, "entregas/cliente.html")
