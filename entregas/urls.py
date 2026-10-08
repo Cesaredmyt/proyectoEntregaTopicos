@@ -12,4 +12,5 @@ urlpatterns = [
     path("ultimo-mal/ver/", views.ultimo_ver_mal, name="ultimo_ver_mal"),
     path("ultimo/", views.ultimo, name="ultimo"),
     path("ultimo/ver/", views.ultimo_ver, name="ultimo_ver"),
+    path("recomendar/", views.recomendar, name="recomendar"),
 ]

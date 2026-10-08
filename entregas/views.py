@@ -1,11 +1,16 @@
-import socket
+import json
 import math
+import socket
 
-from .reglas import elegir_medio
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 from .models import UltimoFolio
+from .recomendador import CAMPOS, CAMPOS_NUMERICOS, obtener_recomendador
+from .medios import crear_medio
+from .reglas import elegir_medio
 
 COPIA = socket.gethostname()
 
@@ -100,3 +105,28 @@ def ultimo_ver(request):
         "atendido_por": COPIA,
         "folio": registro.folio if registro else None,
     })
+
+@csrf_exempt
+@require_POST
+def recomendar(request):
+    try:
+        paquete = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({"error": "el cuerpo debe ser JSON"}, status=400)
+
+    faltantes = [campo for campo in CAMPOS if campo not in paquete]
+    if faltantes:
+        return JsonResponse({"error": "faltan campos", "campos": faltantes}, status=400)
+
+    try:
+        for campo in CAMPOS_NUMERICOS:
+            paquete[campo] = float(paquete[campo])
+    except (TypeError, ValueError):
+        return JsonResponse({"error": f"el campo {campo} debe ser un número"}, status=400)
+
+    sugerencia = obtener_recomendador().sugerir(paquete)
+    plan = crear_medio(sugerencia.medio).planear(paquete)
+    return JsonResponse(
+        {"medio": sugerencia.medio, "motivo": sugerencia.motivo, "plan": plan},
+        json_dumps_params={"ensure_ascii": False},
+    )
