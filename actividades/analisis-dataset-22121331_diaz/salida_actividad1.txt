@@ -1,0 +1,123 @@
+
+======================================================================
+Porcentaje de cada medio según el clima
+======================================================================
+medio_recomendado  bicicleta  camioneta  dron  moto
+clima                                              
+despejado               32.8       16.6  13.5  37.1
+lluvia                   8.5       16.7   0.0  74.8
+viento_fuerte           31.7       18.4   0.0  49.9
+
+======================================================================
+Porcentaje de cada medio según la zona de destino
+======================================================================
+medio_recomendado  bicicleta  camioneta  dron  moto
+zona_destino                                       
+centro                  58.4       13.5   0.0  28.0
+periferia                0.9       14.0  12.6  72.5
+residencial             26.2       14.6  17.3  41.9
+rural                    0.0       40.8   0.0  59.2
+
+======================================================================
+Conteo de envíos por zona y medio
+======================================================================
+medio_recomendado  bicicleta  camioneta  dron  moto
+zona_destino                                       
+centro                  1733        401     0   831
+periferia                 18        286   258  1484
+residencial             1045        583   690  1671
+rural                      0        408     0   592
+
+======================================================================
+Conteo de drones por clima y zona
+======================================================================
+zona_destino  periferia  residencial
+clima                               
+despejado           258          690
+
+======================================================================
+Mínimo, mediana y máximo por medio
+======================================================================
+                  distancia_km               ... volumen_l              
+                           min median   max  ...       min median    max
+medio_recomendado                            ...                        
+bicicleta                  0.4    3.4   7.0  ...       0.3    7.8   39.7
+camioneta                  0.4    9.0  59.1  ...       0.3   31.4  400.6
+dron                       2.1    9.5  15.0  ...       0.3    4.3   12.0
+moto                       0.3   10.6  39.9  ...       0.3   11.3   90.0
+
+[4 rows x 9 columns]
+
+======================================================================
+LIMITES del negocio
+======================================================================
+           peso_kg  volumen_l  distancia_km
+bicicleta      8.0       40.0           7.0
+moto          25.0       90.0          40.0
+camioneta   1000.0     3000.0        1000.0
+dron           2.5       12.0          15.0
+
+======================================================================
+Etiquetas que rompen las reglas del negocio
+======================================================================
+Total: 0 de 10000
+
+======================================================================
+Distancia media por zona
+======================================================================
+               min  median  mean   max
+zona_destino                          
+centro         0.3     2.8   2.9   5.9
+periferia      5.2    15.8  16.2  29.4
+residencial    1.1     7.0   7.3  14.8
+rural         15.9    34.2  35.7  59.1
+
+======================================================================
+Bicicleta: distancia media en cada zona
+======================================================================
+              count  mean  max
+zona_destino                  
+centro         1733   2.8  5.9
+periferia        18   6.4  6.9
+residencial    1045   4.9  7.0
+
+======================================================================
+Porcentaje de envíos de 7 km o menos, por zona
+======================================================================
+zona_destino
+centro         100.0
+periferia        2.2
+residencial     50.2
+rural            0.0
+Name: cerca, dtype: float64
+
+======================================================================
+Camionetas para viajes de menos de 2 km
+======================================================================
+Total: 107
+Por peso (más de 25 kg): 47
+Por volumen (más de 90 L): 61
+Por refrigerado: 36
+Con al menos una razón clara: 95
+Sin razón clara: 12
+       distancia_km  peso_kg  ...  valor_declarado_mxn  fragil
+count          12.0     12.0  ...                 12.0    12.0
+mean            1.6      5.4  ...                614.3     0.5
+std             0.3      8.0  ...                431.2     0.5
+min             1.0      0.6  ...                129.2     0.0
+25%             1.3      0.9  ...                348.5     0.0
+50%             1.7      1.7  ...                473.6     0.5
+75%             1.7      4.4  ...                766.0     1.0
+max             2.0     24.4  ...               1643.6     1.0
+
+[8 rows x 7 columns]
+clima
+despejado        6
+lluvia           4
+viento_fuerte    2
+Name: count, dtype: int64
+prioridad
+express      6
+normal       5
+mismo_dia    1
+Name: count, dtype: int64
