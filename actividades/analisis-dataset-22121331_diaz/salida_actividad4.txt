@@ -1,0 +1,134 @@
+
+======================================================================
+Importancia de cada columna (las dummies de una categoría se suman)
+======================================================================
+Con las columnas separadas (como las ve el árbol):
+distancia_km                32.20
+volumen_l                   19.29
+refrigerado                 13.13
+peso_kg                     12.63
+clima_lluvia                 8.05
+clima_despejado              6.33
+hora_salida                  5.87
+fragil                       1.99
+prioridad_mismo_dia          0.20
+prioridad_normal             0.11
+valor_declarado_mxn          0.07
+ancho_cm                     0.07
+largo_cm                     0.03
+alto_cm                      0.03
+trafico_alto                 0.02
+zona_destino_periferia       0.00
+zona_destino_centro          0.00
+prioridad_express            0.00
+zona_destino_rural           0.00
+zona_destino_residencial     0.00
+clima_viento_fuerte          0.00
+trafico_bajo                 0.00
+trafico_medio                0.00
+dtype: float64
+
+Por columna original (14 columnas):
+distancia_km           32.20
+volumen_l              19.29
+clima                  14.38
+refrigerado            13.13
+peso_kg                12.63
+hora_salida             5.87
+fragil                  1.99
+prioridad               0.31
+valor_declarado_mxn     0.07
+ancho_cm                0.07
+largo_cm                0.03
+alto_cm                 0.03
+trafico                 0.02
+zona_destino            0.00
+dtype: float64
+
+Columnas con importancia 0: ['zona_destino']
+
+======================================================================
+Primeras preguntas del árbol (paso 8)
+======================================================================
+|--- distancia_km <= 7.01
+|   |--- volumen_l <= 90.10
+|   |   |--- clima_lluvia <= 0.50
+|   |   |   |--- peso_kg <= 7.85
+|   |   |   |   |--- truncated branch of depth 5
+|   |   |   |--- peso_kg >  7.85
+|   |   |   |   |--- truncated branch of depth 5
+|   |   |--- clima_lluvia >  0.50
+|   |   |   |--- fragil <= 0.50
+|   |   |   |   |--- truncated branch of depth 5
+|   |   |   |--- fragil >  0.50
+|   |   |   |   |--- truncated branch of depth 5
+|   |--- volumen_l >  90.10
+|   |   |--- class: camioneta
+|--- distancia_km >  7.01
+|   |--- distancia_km <= 39.91
+|   |   |--- volumen_l <= 90.16
+|   |   |   |--- refrigerado <= 0.50
+|   |   |   |   |--- truncated branch of depth 5
+|   |   |   |--- refrigerado >  0.50
+|   |   |   |   |--- class: camioneta
+|   |   |--- volumen_l >  90.16
+|   |   |   |--- class: camioneta
+|   |--- distancia_km >  39.91
+|   |   |--- class: camioneta
+
+
+======================================================================
+Quitar una columna y volver a medir (mismos 2000 envíos de prueba)
+======================================================================
+Con las 14 columnas: 92.1%
+    columna quitada exactitud  cambio (puntos)
+       distancia_km    79.3 %           -12.80
+              clima    84.4 %            -7.65
+        refrigerado    87.8 %            -4.25
+        hora_salida    89.1 %            -3.00
+            peso_kg    90.4 %            -1.70
+          volumen_l    90.6 %            -1.50
+             fragil    91.6 %            -0.55
+           largo_cm    92.0 %            -0.05
+            alto_cm    92.0 %            -0.05
+           ancho_cm    92.0 %            -0.05
+       zona_destino    92.1 %             0.00
+valor_declarado_mxn    92.1 %             0.00
+            trafico    92.1 %             0.00
+          prioridad    92.2 %             0.05
+
+======================================================================
+Pregunta 3: zona_destino, distancia y el dron en el centro
+======================================================================
+Distancia por zona:
+               min  median   max
+zona_destino                    
+centro         0.3     2.8   5.9
+periferia      5.2    15.8  29.4
+residencial    1.1     7.0  14.8
+rural         15.9    34.2  59.1
+
+Envíos al centro: 2965; con distancia mayor a 15 km: 0
+Drones en el centro: 0
+Veces que el modelo dice dron en envíos de centro (prueba): 0 de 629
+Zona de destino en el CSV que el modelo ve: se usa en alguna pregunta del árbol completo: False
+
+Zona vs distancia: ¿la distancia ya dice la zona?
+zona_destino  centro  periferia  residencial  rural
+rango                                              
+(0, 6]          0.67       0.00         0.33   0.00
+(6, 15]         0.00       0.26         0.74   0.00
+(15, 30]        0.00       0.78         0.00   0.22
+(30, 100]       0.00       0.00         0.00   1.00
+drones: 948  con distancia<=5.9: 83 8.8 %
+envios cortos fuera del centro: 1412  drones: 83 5.9 %
+envios >5.9 km fuera del centro: 5623  drones: 865 15.4 %
+count    948.0
+mean       9.6
+std        2.7
+min        2.1
+25%        7.7
+50%        9.5
+75%       11.6
+max       15.0
+Name: distancia_km, dtype: float64

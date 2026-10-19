@@ -1,0 +1,224 @@
+
+======================================================================
+Pregunta 1: errores y confusiones más frecuentes
+======================================================================
+Envíos de prueba: 2000
+Errores: 158 (7.9%)
+Exactitud: 92.1%
+
+Todas las confusiones (real -> predicho):
+real       predicho 
+moto       bicicleta    46
+camioneta  moto         32
+moto       dron         29
+bicicleta  moto         20
+dron       bicicleta    18
+camioneta  bicicleta     9
+           dron          4
+dtype: int64
+
+Matriz de confusión completa (filas: real, columnas: predicho):
+predicho   bicicleta  camioneta  dron  moto
+real                                       
+bicicleta        539          0     0    20
+camioneta          9        291     4    32
+dron              18          0   172     0
+moto              46          0    29   840
+
+Veces que confunde bicicleta con camioneta (en cualquier sentido): 9
+
+======================================================================
+Pregunta 2: eran moto y el modelo mandó a dron
+======================================================================
+Total: 29
+De noche: 26
+Dron imposible según las reglas del negocio (las reglas lo corrigen): 26
+Dron posible según las reglas (las reglas NO lo corrigen): 3
+
+Por qué es imposible el dron en los que sí se corrigen:
+noche                          26
+clima distinto de despejado     0
+zona centro                     0
+pesa más de 2.5 kg              0
+volumen mayor a 12 L            0
+distancia mayor a 15 km         0
+refrigerado                     0
+dtype: int64
+
+Los que las reglas NO corrigen:
+      distancia_km  peso_kg  volumen_l  fragil  valor_declarado_mxn prioridad zona_destino      clima  hora_salida trafico
+2484          7.35     1.67       5.72       0               388.86   express  residencial  despejado           17    alto
+3722         12.14     0.90       3.68       0               455.58    normal  residencial  despejado           13    alto
+677           7.55     1.05       6.60       0               315.50    normal  residencial  despejado           18    alto
+
+Resumen de esos casos:
+       distancia_km  peso_kg  volumen_l  fragil  valor_declarado_mxn
+count          3.00     3.00       3.00     3.0                 3.00
+mean           9.01     1.21       5.33     0.0               386.65
+std            2.71     0.41       1.50     0.0                70.07
+min            7.35     0.90       3.68     0.0               315.50
+25%            7.45     0.98       4.70     0.0               352.18
+50%            7.55     1.05       5.72     0.0               388.86
+75%            9.85     1.36       6.16     0.0               422.22
+max           12.14     1.67       6.60     0.0               455.58
+prioridad
+normal     2
+express    1
+Name: count, dtype: int64
+zona_destino
+residencial    3
+Name: count, dtype: int64
+clima
+despejado    3
+Name: count, dtype: int64
+
+Para comparar: todas las motos de la prueba
+       distancia_km  peso_kg  volumen_l  fragil  valor_declarado_mxn
+count        915.00   915.00     915.00  915.00               915.00
+mean          12.88     3.80      17.27    0.16              1692.11
+std            9.15     3.93      18.06    0.36              3257.36
+min            0.48     0.17       0.33    0.00                50.00
+25%            5.35     1.13       4.62    0.00               390.62
+50%           10.68     2.47      10.62    0.00               812.50
+75%           18.51     4.94      22.41    0.00              1818.74
+max           39.90    24.93      89.51    1.00             55342.15
+prioridad
+normal       0.51
+express      0.31
+mismo_dia    0.18
+Name: proportion, dtype: float64
+
+======================================================================
+Pregunta 3: eran moto y el modelo mandó a bicicleta
+======================================================================
+Total: 46
+      distancia_km  peso_kg  volumen_l  fragil  valor_declarado_mxn  prioridad zona_destino          clima  hora_salida trafico
+617           3.17     3.03      12.97       0               243.70  mismo_dia       centro      despejado            7    alto
+7601          2.01     0.77       3.04       1               192.25    express       centro         lluvia           13   medio
+1984          4.37     1.82      12.92       0              1158.91    express       centro      despejado           12    bajo
+1822          5.33     0.27       0.47       0              1530.83    express       centro      despejado           17    alto
+5656          2.64     0.41       1.76       1               880.56     normal       centro         lluvia           17   medio
+805           5.16    14.63      30.88       1               117.55     normal  residencial         lluvia           17    bajo
+8046          3.96     0.42       1.79       1                50.00     normal       centro         lluvia           18    alto
+8499          3.81     1.15       2.78       0               393.94  mismo_dia       centro  viento_fuerte           12    bajo
+4451          5.54     2.61      14.33       0              3656.70  mismo_dia  residencial      despejado            7    alto
+2957          5.73     7.82      13.57       0              2063.91  mismo_dia  residencial      despejado           18    alto
+9069          3.53     1.07       6.67       0               437.70    express  residencial      despejado            7    bajo
+9823          4.35     4.13      17.91       0              2055.69  mismo_dia  residencial      despejado           16    bajo
+1997          3.98     0.31       2.05       0              4815.99    express  residencial  viento_fuerte           15    alto
+3261          5.51     4.15      22.97       0               777.26    express       centro      despejado           15    alto
+1512          2.69     1.90       9.70       1              2173.70     normal  residencial  viento_fuerte            4    bajo
+3893          6.14     2.16      16.67       0              6406.60  mismo_dia  residencial      despejado           15    alto
+5188          2.59     4.20      11.67       0               594.30     normal  residencial      despejado           15   medio
+6346          1.80     3.74      23.58       1               954.27  mismo_dia       centro      despejado            2   medio
+3852          3.37     2.39      19.09       0               306.37  mismo_dia       centro  viento_fuerte            9    alto
+829           5.41     1.15       9.00       1               579.11    express  residencial      despejado           17    bajo
+6494          3.61     1.80       9.26       1              1363.65    express       centro         lluvia           12    bajo
+922           4.81     0.39       2.08       0               221.79     normal  residencial  viento_fuerte            7    alto
+8864          1.35     3.35      16.80       0               982.83  mismo_dia       centro  viento_fuerte           12   medio
+2179          3.49     0.55       2.37       0               445.13  mismo_dia       centro  viento_fuerte           17   medio
+9244          3.69     2.11      16.30       0                95.08  mismo_dia       centro      despejado           12   medio
+5671          6.77     2.90      17.01       0             24331.74  mismo_dia    periferia      despejado            8    alto
+3014          3.09     8.53      20.64       1               124.56     normal       centro         lluvia           21   medio
+9403          3.45     2.01       9.10       0              4562.53    express       centro      despejado           12   medio
+2330          2.33     0.98       3.64       1              4326.67    express       centro         lluvia           16   medio
+5838          4.77     0.69       2.11       1               912.96    express  residencial         lluvia           19    alto
+8281          2.82     0.51       2.20       0               247.82  mismo_dia  residencial      despejado           11    bajo
+2343          2.46     2.91       4.43       0              2698.16  mismo_dia       centro      despejado           11   medio
+8492          2.94     1.87      12.48       0              2643.45  mismo_dia       centro      despejado           15    bajo
+7794          6.48     3.93      31.03       0               863.74     normal  residencial  viento_fuerte           17    bajo
+7799          2.71     1.65      12.54       1              1460.67     normal       centro         lluvia           14    alto
+4331          5.38     0.36       1.96       0               487.12  mismo_dia       centro      despejado           18   medio
+597           6.72     1.94      13.78       0               833.71  mismo_dia  residencial      despejado           13    alto
+7478          6.89     0.63       3.53       0               349.83    express  residencial      despejado           13    bajo
+5851          2.50     0.69       3.86       1              1332.53    express  residencial      despejado            5    bajo
+6258          5.68     0.74       3.34       1               514.44  mismo_dia  residencial  viento_fuerte            2    alto
+1056          5.23     5.65      18.73       0              3243.26     normal       centro      despejado           13    alto
+6904          2.79     1.20       2.10       0                68.00  mismo_dia       centro         lluvia           15   medio
+9580          4.73     2.58       9.00       0              2477.68  mismo_dia  residencial  viento_fuerte           11    bajo
+9435          4.59     0.64       1.12       0               456.38  mismo_dia       centro  viento_fuerte           17    bajo
+8899          2.78     0.61       1.96       1               160.21    express       centro         lluvia           17   medio
+8794          4.34     1.51       2.77       1              2686.11  mismo_dia       centro      despejado           16   medio
+
+Cuántos están a 1 km o menos del límite de 7 km (6 a 7): 5
+Distancia: mín 1.4, mediana 3.9, máx 6.9
+Cuántos ya son imposibles para bicicleta (las reglas los corrigen): 2
+
+Medianas: moto mal mandada a bici vs bicicletas bien acertadas
+                     moto -> bici  bici acertada
+distancia_km                 3.88           3.37
+peso_kg                      1.81           1.69
+volumen_l                    9.05           7.32
+fragil                       0.00           0.00
+valor_declarado_mxn        872.15         868.19
+hora_salida                 13.50          13.00
+
+prioridad (proporción):
+           moto -> bici  bici acertada
+prioridad                             
+express            0.30           0.30
+mismo_dia          0.48           0.12
+normal             0.22           0.58
+
+zona_destino (proporción):
+              moto -> bici  bici acertada
+zona_destino                             
+centro                0.57           0.64
+residencial           0.41           0.35
+periferia             0.02           0.01
+
+clima (proporción):
+               moto -> bici  bici acertada
+clima                                     
+despejado              0.52           0.85
+lluvia                 0.24           0.02
+viento_fuerte          0.24           0.13
+
+trafico (proporción):
+         moto -> bici  bici acertada
+trafico                             
+alto             0.35           0.41
+medio            0.33           0.30
+bajo             0.33           0.29
+
+noche (proporción):
+       moto -> bici  bici acertada
+noche                             
+False          0.89           0.98
+True           0.11           0.02
+
+======================================================================
+Otro random_state: ¿cambia el análisis?
+======================================================================
+ random_state  errores  exactitud         confusión #1         confusión #2  moto->dron
+            1      161      0.920 moto->bicicleta (37) camioneta->moto (29)          29
+            7      149      0.926 dron->bicicleta (37)      moto->dron (26)          26
+           42      158      0.921 moto->bicicleta (46) camioneta->moto (32)          29
+           99      150      0.925 dron->bicicleta (35) camioneta->moto (29)          24
+         2024      151      0.924 moto->bicicleta (32) camioneta->moto (32)          20
+
+======================================================================
+Extra 1: camionetas reales que el modelo manda a bicicleta
+======================================================================
+Total: 9
+      distancia_km  peso_kg  volumen_l  refrigerado zona_destino      clima prioridad  hora_salida
+7071          2.03     4.88      36.56            0       centro  despejado    normal           16
+7208          1.71     0.61       3.06            0       centro  despejado    normal           23
+1435          2.55     1.25       3.91            0       centro     lluvia    normal           12
+1548          1.66     3.71      13.04            0       centro  despejado   express           13
+3381          5.06     4.12      22.54            0  residencial  despejado    normal           19
+3425          1.95     2.00      14.41            0       centro  despejado    normal            8
+6859          1.77     0.80       3.17            0       centro  despejado   express           19
+5137          2.36     1.97       9.46            0       centro  despejado    normal            9
+5562          4.13     0.82       4.95            0       centro  despejado    normal           10
+Para estos, la bicicleta es posible según las reglas: 9 de 9
+Para estos, la moto es posible según las reglas: 9 de 9
+Los corregirían las reglas del negocio: 0
+
+======================================================================
+Extra 2: ¿cambiar el modelo ataca moto -> bicicleta? (bosque de árboles)
+======================================================================
+Exactitud del árbol: 92.1%   del bosque: 93.1%
+Errores del árbol: 158   del bosque: 138
+moto -> bicicleta: árbol 46   bosque 38
+moto -> dron:      árbol 29   bosque 6

@@ -1,0 +1,32 @@
+Entrenamiento: 8000, prueba: 2000, drones en la prueba: 190
+Reparto en entrenamiento: {'moto': 3663, 'bicicleta': 2237, 'camioneta': 1342, 'dron': 758}
+
+======================================================================
+Parte B: tabla por estrategia (mismos 2000 envíos de prueba, 190 drones)
+======================================================================
+                              envíos de entrenamiento  % dron al entrenar  exactitud  precision dron  recall dron  veces que dice dron  drones de más  drones de más que las reglas corrigen  drones que no encontró  sugerencias imposibles  prob. media de dron
+Sin balancear                                  8000.0                 9.5       92.1           0.839        0.905                205.0           33.0                                   26.0                    18.0                    31.0                0.102
+1. Quitar sobrantes                            3032.0                25.0       89.0           0.859        0.932                206.0           29.0                                   14.0                    13.0                    19.0                0.117
+2. Repetir solo drones                        10905.0                33.6       90.0           0.728        1.000                261.0           71.0                                   34.0                     0.0                    54.0                0.123
+3. Repetir todas las chicas                   14652.0                25.0       90.2           0.766        1.000                248.0           58.0                                   21.0                     0.0                    35.0                0.115
+4. class_weight balanced                       8000.0                 9.5       90.2           0.766        1.000                248.0           58.0                                   21.0                     0.0                    35.0                0.116
+5. Drones nuevos (generador)                  10905.0                33.6       90.0           0.722        1.000                263.0           73.0                                   36.0                     0.0                    56.0                0.124
+
+======================================================================
+Trampa: balancear ANTES de separar
+======================================================================
+Envíos de prueba: 2726, drones en la prueba: 916
+Envíos de prueba que ya estaban (iguales) en el entrenamiento: 902 (33.1%)
+De los drones de la prueba, ya vistos en el entrenamiento: 902
+                                       Honesto (sin balancear)  Trampa (balanceo antes)
+envíos de entrenamiento                               8000.000                10904.000
+% dron al entrenar                                       9.500                   33.600
+exactitud                                               92.100                   91.800
+precision dron                                           0.839                    0.924
+recall dron                                              0.905                    0.989
+veces que dice dron                                    205.000                  981.000
+drones de más                                           33.000                   75.000
+drones de más que las reglas corrigen                   26.000                   42.000
+drones que no encontró                                  18.000                   10.000
+sugerencias imposibles                                  31.000                   68.000
+prob. media de dron                                      0.102                    0.340

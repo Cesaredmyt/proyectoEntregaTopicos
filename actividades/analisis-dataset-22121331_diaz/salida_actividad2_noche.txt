@@ -1,0 +1,16 @@
+
+======================================================================
+Pregunta 4: árbol que solo ve la hora y debe adivinar si es de noche
+======================================================================
+Con 1 nivel(es) de preguntas: acierta 94.9%
+Con 2 nivel(es) de preguntas: acierta 100.0%
+
+======================================================================
+Para pensar: modelo sin y con la columna es_noche (mismos envíos de prueba)
+======================================================================
+Envíos de prueba: 2000, de noche: 219
+
+Profundidad máxima del árbol: 8
+              exactitud  exactitud de noche  errores de noche  recall dron  precision dron  moto->dron  moto->dron de noche
+sin es_noche      0.921               0.817              40.0        0.905           0.839        29.0                 26.0
+con es_noche      0.930               0.941              13.0        0.905           0.910        13.0                  0.0

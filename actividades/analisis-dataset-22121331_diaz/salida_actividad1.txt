@@ -1,6 +1,6 @@
 
 ======================================================================
-Porcentaje de cada medio según el clima
+Porcentaje de cada medio segun el clima
 ======================================================================
 medio_recomendado  bicicleta  camioneta  dron  moto
 clima                                              
@@ -9,7 +9,7 @@ lluvia                   8.5       16.7   0.0  74.8
 viento_fuerte           31.7       18.4   0.0  49.9
 
 ======================================================================
-Porcentaje de cada medio según la zona de destino
+Porcentaje de cada medio segun la zona de destino
 ======================================================================
 medio_recomendado  bicicleta  camioneta  dron  moto
 zona_destino                                       
@@ -19,7 +19,7 @@ residencial             26.2       14.6  17.3  41.9
 rural                    0.0       40.8   0.0  59.2
 
 ======================================================================
-Conteo de envíos por zona y medio
+Conteo de envios por zona y medio
 ======================================================================
 medio_recomendado  bicicleta  camioneta  dron  moto
 zona_destino                                       
@@ -36,7 +36,7 @@ clima
 despejado           258          690
 
 ======================================================================
-Mínimo, mediana y máximo por medio
+Minimo, mediana y maximo por medio
 ======================================================================
                   distancia_km               ... volumen_l              
                            min median   max  ...       min median    max
@@ -82,7 +82,7 @@ periferia        18   6.4  6.9
 residencial    1045   4.9  7.0
 
 ======================================================================
-Porcentaje de envíos de 7 km o menos, por zona
+Porcentaje de envï¿½os de 7 km o menos, por zona
 ======================================================================
 zona_destino
 centro         100.0
@@ -95,11 +95,11 @@ Name: cerca, dtype: float64
 Camionetas para viajes de menos de 2 km
 ======================================================================
 Total: 107
-Por peso (más de 25 kg): 47
-Por volumen (más de 90 L): 61
+Por peso (mï¿½s de 25 kg): 47
+Por volumen (mï¿½s de 90 L): 61
 Por refrigerado: 36
-Con al menos una razón clara: 95
-Sin razón clara: 12
+Con al menos una razï¿½n clara: 95
+Sin razï¿½n clara: 12
        distancia_km  peso_kg  ...  valor_declarado_mxn  fragil
 count          12.0     12.0  ...                 12.0    12.0
 mean            1.6      5.4  ...                614.3     0.5
